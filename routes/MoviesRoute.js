@@ -1,4 +1,5 @@
 const express = require("express");
+const { reset } = require("nodemon");
 const moviesRoute = express.Router();
 const MovieModel = require("../models/MovieModel");
 
@@ -6,8 +7,8 @@ const MovieModel = require("../models/MovieModel");
 moviesRoute.post("/", async (req, res) => {
   try {
     const movie = new MovieModel({
-      url: req.body.url,
-      cover: req.body.cover,
+      link_url: req.body.link_url,
+      cover_url: req.body.cover_url,
       title: req.body.title,
       likes: Math.floor(Math.random() * 500),
       genres: req.body.genres,
@@ -20,9 +21,20 @@ moviesRoute.post("/", async (req, res) => {
   }
 });
 
+moviesRoute.delete("/:id", async (req, res) => {
+  try {
+    const movie = await MovieModel.findByIdAndRemove(req.params.id);
+
+    if (!movie) return res.status(404).send("Movie Doesn't Exist");
+    res.send("Successful").status(200);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
 moviesRoute.get("/", async (req, res) => {
   try {
-    const movies = await MovieModel.find().sort("-_id");
+    const movies = await MovieModel.find().sort("-_id").select("-__v");
     res.send(movies);
   } catch (error) {
     res.status(500).send(error.message);

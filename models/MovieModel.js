@@ -1,9 +1,11 @@
 const mongoos = require("mongoose");
 const MovieSchema = mongoos.Schema({
-  url: String,
-  cover: String,
+  link_url: String,
+  cover_url: String,
   title: String,
   genres: Array,
+  rating: Number,
+  description: String,
   likes: Number,
 });
 
