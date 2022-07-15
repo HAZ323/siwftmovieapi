@@ -10,6 +10,8 @@ moviesRoute.post("/", async (req, res) => {
       link_url: req.body.link_url,
       cover_url: req.body.cover_url,
       title: req.body.title,
+      rating: req.body.rating,
+      description: req.body.description,
       likes: Math.floor(Math.random() * 500),
       genres: req.body.genres,
     });

@@ -4,7 +4,7 @@ const MovieSchema = mongoos.Schema({
   cover_url: String,
   title: String,
   genres: Array,
-  rating: Number,
+  rating: String,
   description: String,
   likes: Number,
 });
