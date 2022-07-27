@@ -15,7 +15,7 @@ const userSchema = mongoos.Schema({
   admin: {
     type: Boolean,
   },
-  likes_movie: Array
+  likes_movie: Array,
 });
 
 module.exports = mongoos.model("Users", userSchema);
