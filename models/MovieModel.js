@@ -7,6 +7,8 @@ const MovieSchema = mongoos.Schema({
   rating: String,
   description: String,
   likes: Number,
+  popular: Boolean,
+  promoted: Boolean,
 });
 
 const MovieModel = mongoos.model("Movies", MovieSchema);

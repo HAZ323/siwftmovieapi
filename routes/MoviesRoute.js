@@ -14,6 +14,8 @@ moviesRoute.post("/", async (req, res) => {
       description: req.body.description,
       likes: Math.floor(Math.random() * 500),
       genres: req.body.genres,
+      popular: req.body.popular || false,
+      promoted: req.body.promoted || false,
     });
 
     const addmovie = await movie.save();
