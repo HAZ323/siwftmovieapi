@@ -65,7 +65,7 @@ userRoute.post("/login", async (req, res) => {
         },
         "randomKEY"
       );
-      res.status(200).send(token);
+      res.status(200).send({ status: 200, data: token });
     } else res.send({ status: 401, data: "Login fail" });
   } catch (error) {
     res.status(500).send("Something went Wrong");
